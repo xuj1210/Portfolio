@@ -105,6 +105,7 @@
 
 		#projects {
 			width: 100vw;
+			min-height: 86vh;
 			background: #b2c7ed;
 		}
 
@@ -182,6 +183,9 @@
 				"proj-6";
 			}
 
+			#nav-bar {
+				justify-content: center;
+			}
 			.nav-link {
 				font-size: 1.2em;
 			}
@@ -327,8 +331,8 @@
 	<nav id="nav-bar">
 		<!-- <a class="nav-hide">Hide</a> -->
 		<a class="nav-link" href="#">Welcome</a>
-		<a class="nav-link" href="#projects">Projects</a>
-		<a class="nav-link" href="#">Contact me</a>
+		<a class="nav-link" href="#projects-anchor">Projects</a>
+		<a class="nav-link" href="#contact">Contact me</a>
 	</nav>
 
 
@@ -386,6 +390,10 @@
 			<span class="dot" onclick="currentSlide(2)"></span>
 			<span class="dot" onclick="currentSlide(3)"></span>
 		</div>
+	</section>
+
+	<section id="contact">
+		<h2 id="contact-header">You can find me at these places:</h2>
 	</section>
 </body>
 </html>
