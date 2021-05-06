@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Welcome!</title>
+	<meta name="viewport" content="width=device-width, initial-scale=">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" type="text/css">
+
+	<style>
+		* {
+			margin: 0px;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		*::-webkit-scrollbar {
+			display: none;
+		}
+
+		body {
+			color: #FFFFFF;
+		}
+
+		a, a:visited, a:active {
+			color: white;
+			font-family: Quicksand, sans-serif;
+			text-decoration: none;
+		}
+
+		#nav-bar {
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			height: 8vh;
+			width: 100vw;
+			background: #edd9b2;
+		}
+
+		#welcome-section {
+			height: 92vh;
+			width: 100vw;
+			background: #e2b2ed;
+			margin-top: 8vh;
+			display: flex;
+			flex-flow: column;
+			justify-content: flex-start;
+			align-items: center;
+		}
+
+		#welcome-text {
+	  	margin-top: 46vh;
+	  	font-family: Raleway, sans-serif;
+	  }
+
+	  .projects-goto {
+	  	margin-top: auto;
+	  	margin-bottom: 3vh;
+	  	font-family: Robot, sans-serif;
+	  }
+
+		.projects-goto:link, .projects-goto:visited, .projects-goto:active {
+			text-decoration: none;
+			font-family: Raleway, sans-serif;
+			font-weight: 500;
+	  }
+
+	  
+
+		#projects {
+			height: 92vh;
+			width: 100vw;
+			background: #b2c7ed;
+		}
+
+
+	</style>
+
+</head>
+
+<body>
+	<nav id="nav-bar">
+		<!-- <a class="nav-hide">Hide</a> -->
+		<a class="nav-link" href="#welcome-section">Welcome</a>
+		<a class="nav-link" href="#projects">Projects</a>
+		<a class="nav-link" href="#">Contact me</a>
+	</nav>
+
+
+	<section id="welcome-section">
+		<h1 id="welcome-text">Welcome to my portfolio :)</h1>
+		<a href="#projects" class="projects-goto">Go to projects</a>
+	</section>
+
+	<section id="projects">
+		<h2 class="projects-header">These are the projects I'm most proud of</h2>
+		<!-- project goes here -->
+	</section>
+</body>
+</html>
