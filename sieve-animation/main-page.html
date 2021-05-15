@@ -118,11 +118,11 @@
 			let startPrimes = async () => {
 				let values = document.getElementById("values-grid").childNodes;
 				let valLen = (values.length);
-				for (let increment = 2; increment <= valLen - 2; ++increment) {
+				for (let increment = 2; values[increment]; ++increment) {
 					if (values[increment].classList.contains("prime")) {
 						values[increment].style.animation = "primeChosen 0.5s forwards";
 						await sleep(500);
-						for (let i = increment * 2; i <= valLen - 2; i += increment) {
+						for (let i = increment * 2; values[i]; i += increment) {
 							if (!values[i].classList.contains("notPrime")) {
 								await sleep(200);
 								values[i].classList.add("notPrime");
