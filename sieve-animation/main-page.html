@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Sieve of Erasthenes Visualization</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" type="text/css">
+
+	<style>
+		* {
+			font-family: Quicksand, sans-serif;
+		}
+		body {
+			height: 100vh;
+			background: linear-gradient(35deg, #222433, #484c6b);
+		}
+		#values-grid {
+			text-align: center;
+			display: grid;
+			grid-template-columns: repeat(10, 8vw);
+			justify-items: center;
+			width: 80vw;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.notPrime {
+			width: 100%;
+			text-align: center;
+		}
+
+		.prime {
+			width: 100%;
+			
+			text-align: center;
+		}
+
+		.grid-val {
+			background: #868dc7;
+			padding-top: 0.75em;
+			padding-bottom: 0.75em;
+		}
+
+		@keyframes changeColor {
+			100% {
+				background: lavender;
+			}
+		}
+
+		@keyframes primeChosen {
+			25% {
+				background: #d4c4b7;
+			}
+
+			50% {
+				background: white;
+			}
+
+			100% {
+				background: #d4c4b7;
+			}
+		}
+
+		#inputs {
+			width: 25vw;
+			margin: auto;
+			text-align: center;
+			border: 5px white solid;
+			border-radius: 5px;
+			padding: 5px;
+		}
+
+		#header {
+			text-align: center;
+			font-size: 2rem;
+			font-family: Raleway, Quicksand, sans-serif;
+			margin: 20px;
+			color: white;
+			font-weight: 600;
+		}
+	</style>
+	
+	</head>
+	<body>
+		<header id="header">Sieve of Eratosthenes</header>
+		<div id="inputs">
+			<input id="number-input" placeholder="Enter a number" type="text">
+			<button id="create-button" onClick="printTable(document.getElementById('number-input').value)">Create table</button>
+			<button onClick="destroyTable()">Reset table</button>
+			<button onClick="startPrimes()">Primify</button>
+		</div>
+		<p id="values-grid"></p>
+		<script>
+			const sleep = (milliseconds) => {
+	  		return new Promise(resolve => setTimeout(resolve, milliseconds))
+			}
+			let printTable = (count) => {
+				destroyTable();
+				for (let i = 0; i <= count; ++i) {
+					let value = document.createElement("span");
+					value.innerHTML = `${i}`;
+					value.className = "prime grid-val";
+					document.getElementById("values-grid").appendChild(value);
+				}
+				let values = document.getElementById("values-grid").childNodes;
+				values[0].style.visibility = "hidden"
+				values[1].style.visibility = "hidden"
+			}
+			let destroyTable = () => {
+				let values = document.getElementById("values-grid").childNodes;
+				let valLen = values.length;
+				for (let i = 0; i < valLen; ++i) {
+					values[0].remove();
+				}
+			}
+			let startPrimes = async () => {
+				let values = document.getElementById("values-grid").childNodes;
+				let valLen = (values.length);
+				for (let increment = 2; increment <= valLen - 2; ++increment) {
+					if (values[increment].classList.contains("prime")) {
+						values[increment].style.animation = "primeChosen 0.5s forwards";
+						await sleep(500);
+						for (let i = increment * 2; i <= valLen - 2; i += increment) {
+							if (!values[i].classList.contains("notPrime")) {
+								await sleep(200);
+								values[i].classList.add("notPrime");
+								values[i].classList.remove("prime");
+								values[i].style.animation = "changeColor 1s forwards";
+							}
+						}
+						await sleep(400);
+					}
+				}
+			}
+			let count = document.getElementById('number-input');
+			count.addEventListener("keyup", function(event) {
+  			// Number 13 is the "Enter" key on the keyboard
+ 		  	if (event.keyCode === 13) {
+ 		  		// Cancel the default action, if needed
+  				event.preventDefault();
+  				// Trigger the button element with a click
+  				document.getElementById("create-button").click();
+  			}
+			});
+		</script>
+	</body>
+</html>
